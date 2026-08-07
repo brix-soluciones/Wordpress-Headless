@@ -11,6 +11,7 @@ by the discovery endpoint (FR-001, FR-002, FR-010).
 
 | Field | Type | Source | Notes |
 |-------|------|--------|-------|
+| `id` | integer | `$post->ID` | WordPress's numeric post identifier — lets callers address this item through the native REST API (`/wp/v2/posts/{id}`, `/wp/v2/pages/{id}`), which has no URL-based lookup. Added post-ship after `specs/003-astro-migration-skill` found no other way to resolve it. |
 | `url` | string (absolute URL) | `get_permalink()` | Public URL; never a preview/draft URL. |
 | `type` | string | post type slug (e.g. `post`, `page`, a CPT slug) | Identifies which content type this item belongs to. |
 | `modified` | string (ISO 8601 datetime, UTC) | `post_modified_gmt` | MUST reflect true last modification time (FR-010); used by callers to diff against a prior sync. |

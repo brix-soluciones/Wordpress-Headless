@@ -76,6 +76,7 @@ class Migration_Toolkit_Sitemap_Endpoint {
 			}
 
 			$items[] = array(
+				'id'       => $post->ID,
 				'url'      => get_permalink( $post ),
 				'type'     => $post->post_type,
 				'modified' => $this->to_iso8601_utc( $post->post_modified_gmt ),

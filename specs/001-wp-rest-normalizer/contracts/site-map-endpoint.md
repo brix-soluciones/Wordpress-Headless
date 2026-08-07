@@ -20,11 +20,13 @@ list and diffs it against a previously stored response).
 {
   "items": [
     {
+      "id": 101,
       "url": "https://origin-site.example/blog/hello-world/",
       "type": "post",
       "modified": "2026-07-30T14:22:05+00:00"
     },
     {
+      "id": 42,
       "url": "https://origin-site.example/services/consulting/",
       "type": "page",
       "modified": "2026-06-11T09:03:44+00:00"
@@ -36,6 +38,7 @@ list and diffs it against a previously stored response).
 | Field | Type | Description |
 |-------|------|--------------|
 | `items` | array | One entry per publicly published content item on the site. Empty array (not an error) if the site has no public content. |
+| `items[].id` | integer | WordPress's numeric post identifier. Added post-ship (`specs/003-astro-migration-skill`'s integration work found no other way to resolve the `id` that reading a post's content via native REST requires). |
 | `items[].url` | string | Absolute public URL of the item. |
 | `items[].type` | string | Post type slug (`post`, `page`, or a custom post type slug). |
 | `items[].modified` | string | ISO 8601 datetime (UTC) of the item's last modification. |

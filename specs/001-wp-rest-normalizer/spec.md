@@ -133,7 +133,12 @@ still rejected.
 
 - **FR-001**: The plugin MUST expose a single discovery endpoint that
   returns, for every publicly published content item on the site, its
-  public URL, its content type, and its last-modified date.
+  numeric identifier, its public URL, its content type, and its
+  last-modified date. The identifier exists so callers that also read
+  content via WordPress's native REST API (which addresses posts/pages by
+  numeric id, not URL) don't need a second lookup to resolve one from
+  the other — added after downstream integration work
+  (`specs/003-astro-migration-skill`) found no other way to get it.
 - **FR-002**: The discovery endpoint MUST include only publicly published
   content — draft, private, trashed, and password-protected items MUST be
   excluded.
@@ -169,9 +174,9 @@ still rejected.
 ### Key Entities *(include if feature involves data)*
 
 - **Site map entry**: One discoverable content item, as listed by the
-  discovery endpoint. Attributes: public URL, content type, last-modified
-  date. Represents a post, page, or custom-post-type item that is publicly
-  published on the WordPress site.
+  discovery endpoint. Attributes: numeric identifier, public URL, content
+  type, last-modified date. Represents a post, page, or custom-post-type
+  item that is publicly published on the WordPress site.
 - **Exposed content type**: A custom post type or ACF field group that the
   plugin has made readable through the standard WordPress REST API.
   Represents existing WordPress configuration being surfaced, not new data.

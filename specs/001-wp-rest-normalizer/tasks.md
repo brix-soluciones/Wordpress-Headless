@@ -118,6 +118,20 @@ excluded, `modified` changes when an item is edited.
       inclusion rule), and `contracts/site-map-endpoint.md` (Guarantees)
       to document the exclusion explicitly rather than leaving it
       implicit.
+- [X] T010b [US1] **Post-ship fix** (found via `specs/003-astro-migration-skill`'s
+      T012 dry-run, not a real-instance run): site-map entries had no
+      numeric `id`, but `get_page_content` (`specs/002-wp-mcp-tools`)
+      requires one to read a post/page via WordPress's native REST API —
+      no other lookup path existed from a site-map `url` to that `id`.
+      Added `'id' => $post->ID` to each item in
+      `plugin/includes/class-sitemap-endpoint.php`'s `query_items()`
+      (trivial — `$post->ID` was already available in the existing
+      `WP_Query` loop, no new query). Updated `spec.md` (FR-001, Key
+      Entities), `data-model.md` (Site map entry), and
+      `contracts/site-map-endpoint.md` (response shape + field table) to
+      document the new field. Downstream: `specs/002-wp-mcp-tools`'s
+      `get_site_map` is a pure passthrough (no code change needed there),
+      but its docs needed the same update — see that feature's tasks.md.
 
 **Checkpoint**: User Story 1 is fully functional and testable independently (MVP)
 

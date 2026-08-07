@@ -13,11 +13,13 @@ SITE_MAP_URL = "https://origin-site.example/wp-json/migracion/v1/site-map"
 async def test_returns_items_passthrough(client, respx_mock):
     items = [
         {
+            "id": 101,
             "url": "https://origin-site.example/blog/hello-world/",
             "type": "post",
             "modified": "2026-07-30T14:22:05+00:00",
         },
         {
+            "id": 42,
             "url": "https://origin-site.example/services/consulting/",
             "type": "page",
             "modified": "2026-06-11T09:03:44+00:00",

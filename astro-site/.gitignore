@@ -4,6 +4,10 @@ dist/
 # generated types
 .astro/
 
+# provisional pattern drafts (specs/004-pattern-authoring-assistant) —
+# not real project artifacts until a human promotes one into src/
+.pattern-drafts/
+
 # dependencies
 node_modules/
 

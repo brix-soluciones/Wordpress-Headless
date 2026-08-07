@@ -12,8 +12,8 @@ No parameters. Operates against the site configured via `WP_MCP_BASE_URL`
 ```json
 {
   "items": [
-    { "url": "https://origin-site.example/blog/hello-world/", "type": "post", "modified": "2026-07-30T14:22:05+00:00" },
-    { "url": "https://origin-site.example/services/consulting/", "type": "page", "modified": "2026-06-11T09:03:44+00:00" }
+    { "id": 101, "url": "https://origin-site.example/blog/hello-world/", "type": "post", "modified": "2026-07-30T14:22:05+00:00" },
+    { "id": 42, "url": "https://origin-site.example/services/consulting/", "type": "page", "modified": "2026-06-11T09:03:44+00:00" }
   ]
 }
 ```
@@ -21,8 +21,9 @@ No parameters. Operates against the site configured via `WP_MCP_BASE_URL`
 `items` is an array of `SiteMapEntry` (see `data-model.md`), passed
 through from the companion plugin's discovery endpoint response
 (`GET {base_url}/wp-json/migracion/v1/site-map`, feature 001's contract)
-without modification. Empty array is a valid, successful response (a site
-with no public content) — not an error.
+without modification — including `id`, added to the plugin's response
+post-ship (feature 001's T010b). Empty array is a valid, successful
+response (a site with no public content) — not an error.
 
 ## Error conditions (raise, per research.md #7)
 

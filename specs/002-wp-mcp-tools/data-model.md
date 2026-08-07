@@ -11,6 +11,7 @@ map entry"; FR-001).
 
 | Field | Type | Notes |
 |-------|------|-------|
+| `id` | integer | WordPress's numeric post identifier — the same `id` `get_page_content` requires. Added to the plugin's response post-ship (`specs/001-wp-rest-normalizer`'s T010b, prompted by `specs/003-astro-migration-skill` finding no other way to resolve it); this server needed no code change since `get_site_map` already passes the plugin's response through as-is. |
 | `url` | string | Absolute public URL, as returned by the plugin's discovery endpoint. |
 | `type` | string | Post type slug (`post`, `page`, or a custom post type slug). |
 | `modified` | string (ISO 8601) | Last-modified datetime, used by the caller to diff successive site maps. |

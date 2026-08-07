@@ -118,6 +118,14 @@ confirm the response matches `quickstart.md` scenario 1.
       instance with the companion plugin active and confirm the expected
       outcomes. **Not run**: no live WordPress instance available in this
       environment — pending manual verification (see completion report).
+- [X] T011a [US1] **Post-ship doc fix** (found via `specs/003-astro-migration-skill`'s
+      T012 dry-run): the plugin's discovery endpoint now includes `id`
+      per post/page (`specs/001-wp-rest-normalizer`'s T010b) — this
+      server needed no code change since `get_site_map` already passes
+      the response through unmodified (T009), but `data-model.md`,
+      `contracts/get_site_map.md`, and `tests/test_site_map.py`'s
+      fixtures were updated to reflect the new field. Full suite
+      re-run: 21/21 passing.
 
 **Checkpoint**: User Story 1 is fully functional and testable independently (MVP)
 
